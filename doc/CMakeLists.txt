@@ -1,0 +1,1 @@
+INSTALL(FILES espctag.1 DESTINATION share/man/man1/)

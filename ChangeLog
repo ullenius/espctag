@@ -1,0 +1,51 @@
+== version 0.4 (2012-09-12) ==
+	* Add an option to backup input RSN file
+	* Add an option to ignore errors when processing several files
+	* Add support for RSN files
+	* Add a verbose option
+	* Add an option to rename files based on tags
+
+== version 0.3 (2011-09-19) ==
+	* Delete field value when the user doesn't give one
+	* Handle multiple file names
+	* Add tag writing support
+	* Add option to print file name
+	* Add options to filter output
+
+== version 0.2.2 (2011-07-25) ==
+	* Rewrite Changelog
+	* Fix typo in man page
+
+== version 0.2.1 (2011-07-12) ==
+	* Install man page with cmake
+	* Add a man page
+	* Rewrite cmake	libspctag detection module
+
+== version 0.2 (2011-07-05) ==
+	* Add ChangeLog
+	* Add COPYING, INSTALL and README files
+	* Use cmake to compile the project
+	* Complete rewrite. Use libspctag to extract ID666 tags.
+	* Don't print filename
+
+== version 0.1.3 (2010-11-12) ==
+	* Allow char from 44 to 58 to be used in text tags
+
+== version 0.1.2 (2010-11-12) ==
+	* Print dump date only if it is non null
+	* Force year to	be print on 4 characteres
+	* Fix length for some binary tags
+
+== version 0.1.1 (2010-11-12) ==
+	* Define some constantes
+	* Fix binary tags detection
+
+== version 0.1 (2010-11-11) ==
+	* Read binary tags
+	* Print disabled channels
+	* Complete rewrite.  Use a more efficient way to read tags.
+	* Read some more tags
+
+== version 0.0.1 (2010-11-08) ==
+	* Initial commit
+

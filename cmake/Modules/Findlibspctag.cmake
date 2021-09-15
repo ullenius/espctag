@@ -1,0 +1,50 @@
+# Try to find libspctag
+# Once done this will define
+#  LIBSPCTAG_FOUND - System has libspctag
+#  LIBSPCTAG_INCLUDE_DIR - The libspctag include directories
+#  LIBSPCTAG_LIBRARY - The libraries needed to use libspctag
+#  LIBSPCTAG_DEFINITION - Compiler switches required for using libspctag
+#  LIBSPCTAG_VERSION - The version of libspctag
+
+FIND_PATH(
+	LIBSPCTAG_INCLUDE_DIR
+	spctag.h
+	/usr/local/include
+	/usr/include
+)
+
+IF (LIBSPCTAG_INCLUDE_DIR)
+	MESSAGE(STATUS "Found spctag.h in ${LIBSPCTAG_INCLUDE_DIR}")
+ELSE (LIBSPCTAG_INCLUDE_DIR)
+	MESSAGE(STATUS "spctag.h include directory not found!")
+ENDIF (LIBSPCTAG_INCLUDE_DIR)
+
+FIND_LIBRARY(
+	LIBSPCTAG_LIBRARY
+	libspctag.so
+	/usr/local/lib
+	/usr/lib
+)
+
+IF (LIBSPCTAG_LIBRARY)
+	MESSAGE(STATUS "Found ${LIBSPCTAG_LIBRARY}")
+ELSE (LIBSPCTAG_LIBRARY)
+	MESSAGE(STATUS "libspctag.so not found!")
+ENDIF (LIBSPCTAG_LIBRARY)
+
+# Extract the version number
+file(READ "${LIBSPCTAG_INCLUDE_DIR}/spctag.h" LIBSPCTAG_VERSION_H_CONTENTS)
+string(REGEX REPLACE ".*#define LIBSPCTAG_VERSION_STR[ \t]*\"([^\n]*)\".*" "\\1" LIBSPCTAG_VERSION "${LIBSPCTAG_VERSION_H_CONTENTS}")
+
+IF (LIBSPCTAG_VERSION VERSION_LESS LIBSPCTAG_MINIMUM_REQUIRED)
+	MESSAGE(FATAL_ERROR "libspctag ${LIBSPCTAG_MINIMUM_REQUIRED} or greather is required")
+ENDIF (LIBSPCTAG_VERSION VERSION_LESS LIBSPCTAG_MINIMUM_REQUIRED)
+
+IF (LIBSPCTAG_INCLUDE_DIR AND LIBSPCTAG_LIBRARY)
+	SET(LIBSPCTAG_FOUND 1)
+	SET(LIBSPCTAG_DEFINITION "lspctag")
+ENDIF (LIBSPCTAG_INCLUDE_DIR AND LIBSPCTAG_LIBRARY)
+
+
+
+MARK_AS_ADVANCED(LIBSPCTAG_FOUND)

@@ -1,0 +1,138 @@
+.TH ESPCTAG 1 "SEPTEMBER 2011" Linux "User Manuals"
+.SH NAME
+espctag \- Edit tags of SPC files (ID666)
+.SH SYNOPSIS
+.B espctag
+[\fIOPTION\fP]... \fIFILE\fP...
+.SH DESCRIPTION
+By default, 
+.B espctag
+prints ID666 tags extracted from SPC files (SNES audio files) on the standard output. When called with the --set switch, flags accept an argument and the corresponding fields are modified. Files are processed in the order specified.
+.SH OPTIONS
+.SS Operations (mutually exclusive)
+.TP
+.B \-s, \-\-set
+Set tags
+.TP
+.B \-g, \-\-get
+Print tags. This is the default behaviour
+.SS Global options
+.TP
+.B \-f, \-\-file
+Print file names
+.TP
+.B \-n, \-\-field
+Don't print field names
+.TP
+.B \-t, \-\-type
+Print tags format
+.TP
+.B \-r\fIFORMAT\fP, \-\-rename=\fIFORMAT\fP
+Rename file based on tags. \fIFORMAT\fP is a template string where ordinary characters are simply used as-is, while conversion specifications introduced by a '%' character cause corresponding tag to be formatted and used on the new file name.
+The conversion specifications have the form:
+
+%[\fIcase-modifier\fP][\fImax-width\fP]\fIconversion\fP
+
+\fIcase-modifier\fP can be '>' for lower case or '<' for upper case.
+.br
+\fImax-width\fP is an integer in the range 0-99, it specifies the maximum number of characters that will be used in the new file name.
+
+The folowing conversion specifications can appear in the template string:
+.IP
+.in
+.B %s
+Song title
+.IP
+.in
+.B %g
+Game title
+.IP
+.in
+.B %n
+Dumper name
+.IP
+.in
+.B %c
+Comments
+.IP
+.in
+.B %d
+Dump date
+.IP
+.in
+.B %l
+Length
+.IP
+.in
+.B %f
+Fade length
+.IP
+.in
+.B %a
+Artist
+.IP
+.in
+.B %m
+Channels
+.IP
+.in
+.B %e
+Emulator
+.IP
+.in
+.B %%
+Literal '%' character
+.IP
+.in
+Every other conversion specification will cause an error.
+.TP
+.B \-b, \-\-backup-rsn
+Backup the input RSN file if it should be changed. This can save you if something goes wrong between the moment the file is deleted and the moment it is recreated
+.TP
+.B \-e, \-\-no-error
+When several files must be treated,
+.B espctag
+will not stop when an error occurs. It will ignore the file and pass to the next.
+.TP
+.B \-v, \-\-verbose
+Verbose mode
+.SS Field selection
+.TP
+.B \-a, \-\-all
+Select all fields. Can not be used with --set
+.TP
+.B \-S[\fISONG_TITLE\fP], \-\-song[=\fISONG_TITLE\fP]
+Print/Set song title
+.TP
+.B \-G[\fIGAME_TITLE\fP], \-\-game[=\fIGAME_TITLE\fP]
+Print/Set game title
+.TP
+.B \-N[\fIDUMPER_NAME\fP], \-\-dumper[=\fIDUMPER_NAME\fP]
+Print/Set dumper name
+.TP
+.B \-C[\fICOMMENTS\fP], \-\-comments[=\fICOMMENTS\fP]
+Print/Set comments
+.TP
+.B \-D[\fIMM/DD/YYYY\fP], \-\-date[=\fIMM/DD/YYYY\fP]
+Print/Set dump date
+.TP
+.B \-L[\fILENGTH\fP], \-\-length[=\fILENGTH\fP]
+Print/Set length of song (without fade length)
+.TP
+.B \-F[\fILENGTH\fP], \-\-fade[=\fILENGTH\fP]
+Print/Set fadeout length
+.TP
+.B \-A[\fIARTIST\fP], \-\-artist[=\fIARTIST\fP]
+Print/Set artist name
+.TP
+.B \-M[\fICHANNELS\fP], \-\-channels[=\fICHANNELS\fP]
+Print/Set default channels states (0 = channel is enable / 1 = channel is disable)
+.TP
+.B \-E[\fIEMULATOR\fP], \-\-emulator[=\fIEMULATOR\fP]
+Print/Set emulator used to make the dump
+.SH BUGS
+Please, submit bug reports on the sourceforge project page, at the following address :
+
+https://sourceforge.net/tracker/?group_id=563796&atid=2286949
+.SH AUTHOR
+Jerome SONRIER <jsid@emor3j.fr.eu.org>

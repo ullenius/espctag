@@ -1,0 +1,7 @@
+espctag README file
+
+See INSTALL file for installation instructions.
+
+espctag is a small program written in C that use libspctag to edit ID666 tags.
+
+Author : Jérôme SONRIER <jsid@emor3j.fr.eu.org>
